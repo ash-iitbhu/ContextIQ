@@ -8,6 +8,7 @@ router = APIRouter()
 jwt_bearer = JwtAccessBearer(secret_key="supersecret")
 auth_service = AuthService()
 
+
 @router.post("/register")
 async def register(user: User):
     if auth_service.user_exists(user.username):
@@ -15,6 +16,7 @@ async def register(user: User):
     password_hash = bcrypt.hash(user.password)
     auth_service.insert_user(user.username, password_hash)
     return {"msg": "User registered successfully"}
+
 
 @router.post("/login")
 async def login(user: User):

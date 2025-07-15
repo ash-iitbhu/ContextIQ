@@ -7,8 +7,11 @@ from .routes_ingest import sessions
 router = APIRouter()
 jwt_bearer = JwtAccessBearer(secret_key="supersecret")
 
+
 @router.post("/chat")
-async def chat_route(request: ChatRequest, credentials: JwtAuthorizationCredentials = Depends(jwt_bearer)):
+async def chat_route(
+    request: ChatRequest, credentials: JwtAuthorizationCredentials = Depends(jwt_bearer)
+):
     vectordb = sessions.get(request.session_id)
     if not vectordb:
         return {"answer": "Session not found. Please ingest a document first."}

@@ -9,6 +9,7 @@ import uvicorn
 
 load_dotenv(override=True)
 
+
 def create_app() -> FastAPI:
     app = FastAPI()
     app.add_middleware(
@@ -22,6 +23,7 @@ def create_app() -> FastAPI:
     app.include_router(ingest_router)
     app.include_router(chat_router)
     return app
+
 
 app = create_app()
 

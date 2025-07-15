@@ -1,7 +1,9 @@
 from ..db import MilvusUserDB
 
+
 class AuthService:
     """Service for user authentication and registration."""
+
     def __init__(self):
         self.user_db = MilvusUserDB()
 

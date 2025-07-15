@@ -7,7 +7,9 @@ async def ingest_data(text):
     try:
         splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
         chunks = splitter.split_text(text)
-        embedder = HuggingFaceEmbeddings(model_name = "sentence-transformers/all-MiniLM-L6-v2")
+        embedder = HuggingFaceEmbeddings(
+            model_name="sentence-transformers/all-MiniLM-L6-v2"
+        )
         vectordb = FAISS.from_texts(chunks, embedder)
         return vectordb
     except Exception as e:

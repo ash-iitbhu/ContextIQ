@@ -26,6 +26,7 @@ A production-grade Retrieval-Augmented Generation (RAG) chatbot using FastAPI, L
     - create virual environemnt `python -m venv .venv`
     - activate virtual environment `source .venv/bin/activate`
     - install dependencies `pip install -r requirements.txt`
+    - run command `pre-commit install`
 
     # DB setup(this will run a milvus DB on docker)
     - Install docker desktop

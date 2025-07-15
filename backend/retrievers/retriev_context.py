@@ -11,7 +11,7 @@ def get_context(vectordb, request):
 
 
 def get_answer(context, request):
-    llm = ChatGoogleGenerativeAI(model = GOOGLE_GENAI_MODEL)
+    llm = ChatGoogleGenerativeAI(model=GOOGLE_GENAI_MODEL)
     prompt = prompt_context_question
     parser = StrOutputParser()
     chain = prompt | llm | parser

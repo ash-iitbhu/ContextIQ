@@ -27,3 +27,6 @@ faiss-cpu
 # PDF and YouTube extraction
 PyPDF2
 pytubefix
+
+## code quality
+pip install pre-commit==4.2.0

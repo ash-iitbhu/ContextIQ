@@ -1,5 +1,6 @@
 from PyPDF2 import PdfReader
 
+
 async def extract_pdf_text(pdf_file):
     try:
         reader = PdfReader(pdf_file.file)
