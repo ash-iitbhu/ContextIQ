@@ -23,6 +23,9 @@
             <option value="pdf">PDF File</option>
           </select>
         </div>
+        <div class="modern-input">
+          <input v-model="documentName" type="text" placeholder="Document Name" required />
+        </div>
         <transition name="fade">
           <div v-if="dataSource === 'youtube'" class="modern-input">
             <input v-model="youtubeUrl" type="text" placeholder="Paste YouTube video URL here" />
@@ -89,6 +92,7 @@ const jwtToken = ref(localStorage.getItem('jwtToken') || '')
 const isAuthenticated = computed(() => !!jwtToken.value)
 const showAuthModal = ref(false)
 const loading = ref(false)
+const documentName = ref('')
 
 watch(jwtToken, (newVal) => {
   if (newVal) {
@@ -169,6 +173,7 @@ async function startChat() {
   error.value = ''
   loading.value = true
   const formData = new FormData()
+  formData.append('document_name', documentName.value)
   if (dataSource.value === 'youtube' && youtubeUrl.value) formData.append('youtube_url', youtubeUrl.value)
   if (dataSource.value === 'pdf' && pdfFile.value) formData.append('pdf', pdfFile.value)
   try {

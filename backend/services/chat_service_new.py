@@ -4,6 +4,7 @@ from langgraph.graph import StateGraph, MessagesState
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.output_parsers import StrOutputParser
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_huggingface import HuggingFaceEmbeddings
 
 from ..prompts import prompt_context_question
 from ..config import GOOGLE_GENAI_MODEL, DB_PATH
@@ -34,8 +35,14 @@ class ChatWorkflow:
 
             context = ""
             if vectordb and question:
-                docs = vectordb.similarity_search(question, k=4)
-                context = "\n".join(doc.page_content for doc in docs)
+                embedder = HuggingFaceEmbeddings(
+                    model_name="sentence-transformers/all-MiniLM-L6-v2"
+                )
+                query_embedding = embedder.embed_query(question)
+                docs = vectordb.similarity_search(
+                    query_embedding, k=4, session_id=configurable.get("thread_id")
+                )
+                context = "\n".join(doc for doc in docs)
 
             historical_message = "\n".join(
                 f"{msg.type.capitalize()}: {msg.content}" for msg in messages
