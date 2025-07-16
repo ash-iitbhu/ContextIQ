@@ -60,7 +60,6 @@ services:
     depends_on:
       - "etcd"
       - "minio"
-
 networks:
   default:
     name: milvus

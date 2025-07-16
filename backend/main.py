@@ -1,4 +1,7 @@
 from dotenv import load_dotenv
+
+load_dotenv(override=True)
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .api.routes_auth import router as auth_router
@@ -6,8 +9,6 @@ from .api.routes_ingest import router as ingest_router
 from .api.routes_chat import router as chat_router
 from .config import BACKEND_HOST, BACKEND_PORT
 import uvicorn
-
-load_dotenv(override=True)
 
 
 def create_app() -> FastAPI:

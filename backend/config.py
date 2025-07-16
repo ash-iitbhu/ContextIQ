@@ -10,3 +10,6 @@ DB_USER_COLLECTION = "users"
 ##Backend
 BACKEND_HOST = "0.0.0.0"
 BACKEND_PORT = 8000
+
+# state sqlite DB
+DB_PATH = "/Users/ashish/projects/ContextIQ/backend/state_db/example.db"
