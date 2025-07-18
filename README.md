@@ -16,25 +16,5 @@ A Retrieval-Augmented Generation (RAG) chatbot using FastAPI, LangChain, LangGra
 - FastAPI, LangChain, LangGraph, Milvus (see `backend/`)
 
 ## Usage
-1. Setup
-    - Python 3.9+ with virtual environment
-    - docker
-    - All dependencies installed (see requirements.txt)
-    steps:
-    # environment setup
-    - clone the repo
-    - create virual environemnt `python -m venv .venv`
-    - activate virtual environment `source .venv/bin/activate`
-    - install dependencies `pip install -r requirements.txt`
-    - run command `pre-commit install`
-
-    # DB setup(this will run a milvus DB on docker)
-    - Install docker desktop
-    - `cd docker`
-    - `sudo docker compose up -d`
-
-2. Start backend
-    - backend service `python -m backend.main`
-3. Start Frontend
-    - run frontend `npm run dev --prefix frontend`
+- `docker compose -f docker/docker-compose.yml up --build`
 
