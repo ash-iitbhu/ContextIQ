@@ -60,6 +60,37 @@ services:
     depends_on:
       - "etcd"
       - "minio"
+
+  backend:
+    build:
+      context: ../backend
+    container_name: contextiq-backend
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+    depends_on:
+      - standalone
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../backend:/app
+      - backend_state_db:/state_db
+    networks:
+      - default
+
+  frontend:
+    build:
+      context: ../frontend
+    container_name: contextiq-frontend
+    command: ["npm", "run", "dev", "--", "--host"]
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - default
+
+volumes:
+  backend_state_db:
+
 networks:
   default:
     name: milvus

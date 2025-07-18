@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from passlib.hash import bcrypt
 from fastapi_jwt import JwtAccessBearer, JwtAuthorizationCredentials
-from ..models import User
-from ..services import AuthService
+from models import User
+from services import AuthService
 
 router = APIRouter()
 jwt_bearer = JwtAccessBearer(secret_key="supersecret")

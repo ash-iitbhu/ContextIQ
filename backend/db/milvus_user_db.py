@@ -6,7 +6,8 @@ from pymilvus import (
     DataType,
     utility,
 )
-from ..config import DB_HOST, DB_PORT, DB_NAME, DB_USER_COLLECTION
+from config import DB_HOST, DB_PORT, DB_NAME, DB_USER_COLLECTION
+import time
 
 
 class MilvusUserDB:
@@ -26,6 +27,7 @@ class MilvusUserDB:
         self.setup_collection()
 
     def connect(self):
+        wait_for_milvus(host=DB_HOST, port=DB_PORT)
         connections.connect(self.db_name, host=self.host, port=self.port)
 
     def setup_collection(self):
@@ -79,3 +81,19 @@ class MilvusUserDB:
         if result:
             return result[0]["password_hash"]
         return None
+
+
+def wait_for_milvus(host="localhost", port="19530", timeout=60):
+    start = time.time()
+    while True:
+        try:
+            connections.connect("default", host=host, port=port)
+            # Try a simple operation to confirm readiness
+            connections.get_connection_addr("default")
+            print("Milvus is ready!")
+            break
+        except Exception as e:
+            if time.time() - start > timeout:
+                raise RuntimeError("Milvus did not become ready in time") from e
+            print("Waiting for Milvus to be ready...")
+            time.sleep(2)

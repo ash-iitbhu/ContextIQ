@@ -1,4 +1,4 @@
-from ..db import MilvusUserDB
+from db import MilvusUserDB
 
 
 class AuthService:

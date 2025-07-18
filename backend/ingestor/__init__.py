@@ -1,1 +1,1 @@
-from .data_ingestion import ingest_data
+from ingestor.data_ingestion import ingest_data

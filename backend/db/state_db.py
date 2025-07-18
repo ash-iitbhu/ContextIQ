@@ -1,8 +1,6 @@
 import sqlite3
 from langgraph.checkpoint.sqlite import SqliteSaver
 
-from ..config import DB_PATH
-
 
 class StateDB:
     def __init__(self, db_path):

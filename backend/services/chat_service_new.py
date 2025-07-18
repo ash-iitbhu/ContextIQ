@@ -6,9 +6,9 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_huggingface import HuggingFaceEmbeddings
 
-from ..prompts import prompt_context_question
-from ..config import GOOGLE_GENAI_MODEL, DB_PATH
-from ..db import StateDB
+from prompts import prompt_context_question
+from config import GOOGLE_GENAI_MODEL, DB_PATH
+from db import StateDB
 
 
 class ChatWorkflow:

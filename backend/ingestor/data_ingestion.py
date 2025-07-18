@@ -1,6 +1,6 @@
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from ..db.milvus_vector_store import MilvusVectorStore
+from db.milvus_vector_store import MilvusVectorStore
 import uuid
 
 

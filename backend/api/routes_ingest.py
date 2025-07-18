@@ -2,8 +2,8 @@ from fastapi import APIRouter, UploadFile, File, Form, Depends
 from fastapi_jwt import JwtAuthorizationCredentials, JwtAccessBearer
 from typing import Optional
 import uuid
-from ..text_extractors import extract_youtube_transcript, extract_pdf_text
-from ..ingestor import ingest_data
+from text_extractors import extract_youtube_transcript, extract_pdf_text
+from ingestor import ingest_data
 
 router = APIRouter()
 jwt_bearer = JwtAccessBearer(secret_key="supersecret")

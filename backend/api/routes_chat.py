@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends
 from fastapi_jwt import JwtAuthorizationCredentials, JwtAccessBearer
-from ..models import ChatRequest
+from models import ChatRequest
 from .routes_ingest import sessions
-from ..services import ChatWorkflow, ChatManager
+from services import ChatWorkflow, ChatManager
 
 router = APIRouter()
 jwt_bearer = JwtAccessBearer(secret_key="supersecret")

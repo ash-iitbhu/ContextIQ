@@ -1,2 +1,2 @@
-from .youtube_transcript import extract_youtube_transcript
-from .pdf_text import extract_pdf_text
+from text_extractors.youtube_transcript import extract_youtube_transcript
+from text_extractors.pdf_text import extract_pdf_text
