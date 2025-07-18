@@ -1,6 +1,6 @@
 # ContextIQ
 
-A production-grade Retrieval-Augmented Generation (RAG) chatbot using FastAPI, LangChain, LangGraph and MilvusDB backend and Vue frontend. Supports YouTube transcript and PDF ingestion for question answering.
+A Retrieval-Augmented Generation (RAG) chatbot using FastAPI, LangChain, LangGraph and MilvusDB backend and Vue frontend. Supports YouTube transcript and PDF ingestion for question answering.
 
 ## Features
 - Upload a PDF or provide a YouTube URL
@@ -38,5 +38,3 @@ A production-grade Retrieval-Augmented Generation (RAG) chatbot using FastAPI, L
 3. Start Frontend
     - run frontend `npm run dev --prefix frontend`
 
-## License
-MIT
